@@ -32,6 +32,9 @@ with app.app_context():                                               # Add init
         pass
 
 
+city_entered = None
+
+
 @app.route("/")                                                       # Home route 
 def home():    
     all_data = db.session.execute(db.select(sensordata)).scalars()
@@ -68,6 +71,14 @@ def update():
     if request.method == "POST":
         try:
                                                                       # Update record
+            cityname = request.form["entered_city"].title()
+            record  = db.session.execute(db.select(sensordata).filter_by(city=cityname)).scalar_one()
+        
+            if request.form["entered_temp"]:     record.temp = request.form["entered_temp"] 
+            if request.form["entered_pres"]:     record.pres = request.form["entered_pres"] 
+            if request.form["entered_hum"]:      record.hum = request.form["entered_hum"] 
+        
+            db.session.commit()
             pass
         except:
             pass        
