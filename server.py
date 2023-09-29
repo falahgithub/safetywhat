@@ -43,6 +43,16 @@ def add():
     if request.method == "POST":
         try:
                                                                       # Create Record
+            if request.form["entered_city"]:
+                
+                new_data = sensordata(
+                    city=request.form["entered_city"].title(),
+                    temp=request.form["entered_temp"],
+                    pres=request.form["entered_pres"],
+                    hum=request.form["entered_hum"])
+                
+                db.session.add(new_data)
+                db.session.commit()
             pass
         except:
             pass
