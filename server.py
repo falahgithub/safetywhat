@@ -110,6 +110,10 @@ def sort():
 
 @app.route("/filter", methods=["POST"])                               # Filter route
 def filter(): 
+    global city_entered
+    
+    city_entered = request.form["entered_city"].title()
+    
     return redirect(url_for("home"))
 
 
