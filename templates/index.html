@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/styles.css">
+    <title>Sensor Data</title>
+</head>
+<body>
+
+    <header>
+        <h1>SafetyWhat</h1>
+    </header>
+
+
+    <div class="wrap_table">
+        <table class="table table-secondary my-3">
+            <h1>Sensor Data</h1>
+
+            <tr>
+                <th>City</th>
+                <th>Temperature (C)</th>
+                <th>Pressure (kPa)</th>
+                <th>Humidity (RH) </th>
+            </tr>
+            {% for i in all_data %}
+            <tr>
+                <td>{{i.city}}</td>
+                <td>{{i.temp}}</td>
+                <td>{{i.pres}}</td>
+                <td>{{i.hum}}</td>
+            </tr>
+            {% endfor%}
+        </table>
+        <div class="btn-group mb-3">
+            <button class="btn btn-outline-danger"><a href="{{url_for('add')}}">Add new data</a> </button>
+            <button class="btn btn-outline-danger"> <a href="{{url_for('update')}}">Update any data</a></button>
+        </div>
+    </div>
+
+
+    <div class="form-check position-relative ">
+        <div class="position-absolute top-0 start-50 translate-middle-x wrapper">
+            <div class="sort-filter">
+                <form action="/sort" method="post">
+
+                    <h3>Sorting</h3>
+
+                    <input class="form-check-input" type="radio" name="radio-group"  value="T"> Temperature</input><br />
+                    <input class="form-check-input" type="radio" name="radio-group"  value="P"> Pressure </input><br />
+                    <input class="form-check-input" type="radio" name="radio-group"  value="H">Humidity</input><br />
+                    
+                    <input type="submit" value="Submit" class="btn btn-outline-danger mt-3">
+
+                </form>
+            </div>
+
+            <div class="sort-filter">
+                <form action="/filter" method="post" >
+
+                    <h3>Filtering</h3>
+
+                    <label for="entered_city" class="form-label">Enter city name</label>
+                    <input type="text" name="entered_city" class="form-control" />
+                    
+                    <input type="submit" value="Submit / Reset" class="btn btn-outline-danger mt-3">
+
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,40 @@
+header {
+    background-color: darksalmon;
+    color: white;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+
+  a {
+    color: black !important;
+    text-decoration: none !important;
+  }
+
+
+  .wrap_table {
+    width: 75%;
+    margin-left: 12.5%;
+    text-align: center;
+  }
+  
+  .add-update {
+    position: relative !important;
+    left:auto;
+    right: auto;
+  }
+  
+  .wrapper {
+    display: flex;
+    gap: 50px;
+  }
+
+  .sort-filter {
+    padding: 50px 50px;
+    background-color: rgb(237, 197, 197);
+    text-align: center;
+  }
+
+  .add-data {
+    width: 50%;
+    margin-left: 12.5%;
+  }

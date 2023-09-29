@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/styles.css">
+    <title>Add</title>
+</head>
+<body>
+    <header>
+       <h1>SafetyWhat</h1>
+    </header>
+
+    
+    <div class="add-data">
+        <form action="/add" method="post" >
+
+            <label for="entered_city" class="form-label mt-3">Enter city name</label>
+            <input type="text" name="entered_city" class="form-control"/>
+
+            <label for="entered_temp" class="form-label mt-3">Enter Temperature</label>
+            <input type="text" name="entered_temp" class="form-control" />
+
+            <label for="entered_pres" class="form-label mt-3">Enter Pressure</label>
+            <input type="text" name="entered_pres" class="form-control"/>
+
+            <label for="entered_hum" class="form-label mt-3">Enter Humidity</label>
+            <input type="text" name="entered_hum" class="form-control"/>
+
+            <input type="submit" value="Submit here" class="btn btn-outline-danger mt-3">
+
+        </form>
+    </div>
+</body>
+</html>
