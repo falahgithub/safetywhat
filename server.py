@@ -31,13 +31,16 @@ with app.app_context():                                               # Add init
     except:
         pass
 
-
+order_entered = "temp"
 city_entered = None
 
 
 @app.route("/")                                                       # Home route 
 def home():    
-    all_data = db.session.execute(db.select(sensordata)).scalars()
+    if city_entered: 
+        all_data = db.session.execute(db.select(sensordata).order_by(order_entered).filter_by(city=city_entered)).scalars()
+    else:
+        all_data = db.session.execute(db.select(sensordata).order_by(order_entered)).scalars()
     return render_template("index.html", all_data=all_data)
 
 
@@ -79,7 +82,7 @@ def update():
             if request.form["entered_hum"]:      record.hum = request.form["entered_hum"] 
         
             db.session.commit()
-            pass
+            
         except:
             pass        
         finally:
@@ -91,7 +94,12 @@ def update():
 @app.route("/sort", methods=["POST"])                                 # Sort route
 def sort():
     try:
-        pass
+        global order_entered
+
+        if request.form["radio-group"] == "T":      order_entered = "temp"
+        if request.form["radio-group"] == "P":      order_entered = "pres"
+        if request.form["radio-group"] == "H":      order_entered = "hum"
+        
     except:
         pass
 
